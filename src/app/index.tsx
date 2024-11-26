@@ -1,8 +1,9 @@
+import { Redirect } from "expo-router";
 import React from "react";
 import { Text } from "react-native";
 
 const Home = () => {
-  return <Text>Hello World</Text>;
+  return <Redirect href="/(tabs)/" />;
 };
 
 export default Home;
