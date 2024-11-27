@@ -9,7 +9,7 @@ export const pickImage = async (
     mediaTypes: ["images"],
     allowsEditing: true,
     aspect: aspectRatio,
-    quality: 1,
+    quality: 0.5,
   });
 
   console.log(result);

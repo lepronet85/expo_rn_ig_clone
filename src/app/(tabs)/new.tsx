@@ -1,8 +1,9 @@
-import { View, Text, Image, TextInput, Pressable } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
+import { View, Text, Image, TextInput } from "react-native";
+import React, { useCallback, useState } from "react";
 import { useFocusEffect } from "expo-router";
 import { pickImage } from "@/src/utils/ImagePicker";
 import Button from "@/src/components/Button";
+import { uploadImage } from "@/src/utils/ImageUpload";
 
 const CreatePost = () => {
   const [caption, setCaption] = useState<string>("");
@@ -15,6 +16,14 @@ const CreatePost = () => {
       }
     }, [image])
   );
+
+  const createPost = async () => {
+    if (!image) return;
+
+    const response = await uploadImage(image);
+
+    console.log("Image id", response?.public_id);
+  };
 
   return (
     image && (
@@ -38,7 +47,7 @@ const CreatePost = () => {
           className="w-full p-3 "
         />
         <View className="mt-auto w-full">
-          <Button title="Share" onPress={() => console.log("Shared")} />
+          <Button title="Share" onPress={createPost} />
         </View>
       </View>
     )
