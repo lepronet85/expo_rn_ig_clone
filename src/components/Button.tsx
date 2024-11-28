@@ -6,6 +6,7 @@ type ButtonProps = {
   className?: string;
   type?: "primary" | "secondary" | "outline";
   size?: "small" | "medium" | "large";
+  disabled?: boolean;
   onPress: () => void;
 };
 
@@ -38,6 +39,7 @@ const Button = ({
   className,
   type = "primary",
   size = "medium",
+  disabled = false,
   onPress,
 }: ButtonProps) => {
   return (

@@ -2,6 +2,7 @@ import { View, Text, Image, TextInput } from "react-native";
 import React, { useState } from "react";
 import { pickImage } from "@/src/utils/ImagePicker";
 import Button from "@/src/components/Button";
+import { supabase } from "@/src/lib/supabase";
 
 const Feed = () => {
   const [userProfile, setUserProfile] = useState<string | null>(null);
@@ -38,7 +39,7 @@ const Feed = () => {
           type="primary"
           onPress={() => console.log("Shared")}
         />
-        <Button title="Sign out" onPress={() => console.log("Shared")} />
+        <Button title="Sign out" onPress={() => supabase.auth.signOut()} />
       </View>
     </View>
   );
